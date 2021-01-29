@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: 2-tier-app
+spec:
+  rules:
+  - host: 2-tier-app.127.0.0.1.xip.io
+    http:
+      paths:
+      - backend:
+          serviceName: two-tier-app
+          servicePort: 80
