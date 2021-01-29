@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 2-tier-app
+  labels:
+    app: 2-tier-app
+spec:
+  selector:
+    matchLabels:
+      app: 2-tier-app
+  template:
+    metadata:
+      labels:
+        app: 2-tier-app
+    spec:
+      containers:
+      - name: hello-world-httpd
+        args:
+        - -httpd
+        image: flaccid/hello-world
+        stdin: true
+        ports:
+        - name: httpd
+          containerPort: 8080
+          protocol: TCP
